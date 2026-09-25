@@ -9,9 +9,9 @@
 ## ⚙️ Datos necesarios y obligatorios a completar
 > Borrar los datos de ejemplo y poner los datos reales
 
-* **APELLIDO, NOMBRE**: BERDICHEVSKY, CECILIA
-* **COMISIÓN**: 8
-* **DNI**: 15975325
+* **APELLIDO, NOMBRE**: ZAGWODZKI, SANTIAGO
+* **COMISIÓN**: 3
+* **DNI**: 46820789
 
 > * Cecilia Berdichevsky: fue una de las primeras programadoras de Clementina, la primera computadora de gran porte para fines científicos en Argentina instalada en 1961.
 
