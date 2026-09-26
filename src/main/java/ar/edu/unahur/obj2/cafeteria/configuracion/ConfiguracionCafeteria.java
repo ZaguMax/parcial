@@ -3,8 +3,8 @@ package ar.edu.unahur.obj2.cafeteria.configuracion;
 public class ConfiguracionCafeteria {
     
     private static ConfiguracionCafeteria instancia;
-    private Double porcentajeCargoServicio;
-    private Double porcentajeImpuestos;
+    private double porcentajeCargoServicio;
+    private double porcentajeImpuestos;
 
     private ConfiguracionCafeteria(){}
 
@@ -19,7 +19,7 @@ public class ConfiguracionCafeteria {
         return porcentajeCargoServicio;
     }
 
-    public void setPorcentajeCargoServicio(Double porcentajeCargoServicio) {
+    public void setPorcentajeCargoServicio(int porcentajeCargoServicio) {
         this.porcentajeCargoServicio = porcentajeCargoServicio;
     }
 
@@ -27,7 +27,7 @@ public class ConfiguracionCafeteria {
         return porcentajeImpuestos;
     }
 
-    public void setPorcentajeImpuestos(Double porcentajeImpuestos) {
+    public void setPorcentajeImpuestos(int porcentajeImpuestos) {
         this.porcentajeImpuestos = porcentajeImpuestos;
     }
 

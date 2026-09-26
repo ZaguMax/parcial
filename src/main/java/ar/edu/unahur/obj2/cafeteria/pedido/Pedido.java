@@ -9,22 +9,25 @@ import ar.edu.unahur.obj2.cafeteria.productos.Producto;
 
 public class Pedido {
 
-    private Cliente cliente;
-    private Producto producto;
-    private Integer cantidad;
-    private Double importeTotal;
+    private final Cliente cliente;
+    private final Producto producto;
+    private final int cantidad;
+    private final double importeTotal;
 
-    
-    public Pedido(Cliente cliente, Producto producto, Integer cantidad, Categoria categoria) {
+    public Pedido(Cliente cliente, Producto producto, int cantidad) {
         if (cantidad <= 0) {
             throw new CantidadInvalidaException("La cantidad debe ser mayor a cero");
         }
+
+        Categoria categoria = cliente.getPreferencia().resolverParaPedido(cliente);
+
         this.cliente = cliente;
         this.producto = producto;
         this.cantidad = cantidad;
         this.importeTotal = calcularImporte(categoria);
 
         producto.reducirStock(cantidad);
+        cliente.agregarPedido(this);
     }
 
     private Double calcularImporte(Categoria categoria){
@@ -32,8 +35,8 @@ public class Pedido {
         Double subtotal = precioUnitario * cantidad;
 
         ConfiguracionCafeteria config = ConfiguracionCafeteria.getInstancia();
-        Double conServicio = subtotal * (1 + config.getPorcentajeCargoServicio()/100);
-        Double total = conServicio * (1 + config.getPorcentajeImpuestos()/100);
+        Double conServicio = subtotal * (1.0 + config.getPorcentajeCargoServicio()/100.0);
+        Double total = conServicio * (1.0 + config.getPorcentajeImpuestos()/100.0);
         return total;    
     }
 

@@ -1,14 +1,31 @@
 package ar.edu.unahur.obj2.cafeteria.cliente;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unahur.obj2.cafeteria.excepciones.ClienteSinPedidosException;
 import ar.edu.unahur.obj2.cafeteria.pedido.Pedido;
+import ar.edu.unahur.obj2.cafeteria.preferencias.Preferencia;
 
 public class Cliente {
     private String nombre;
     private Boolean esEmpleado;
-    private List<Pedido> historialPedidos;
+    private Preferencia preferencia;
+    private List<Pedido> historialPedidos = new ArrayList<>();
+
+    public Cliente(String nombre, boolean esEmpleado, Preferencia preferencia) {
+        this.nombre = nombre;
+        this.esEmpleado = esEmpleado;
+        this.preferencia = preferencia;
+    }
+
+    public Preferencia getPreferencia() {
+        return preferencia;
+    }
+
+    public void agregarPedido(Pedido pedido) {
+        historialPedidos.add(pedido);
+    }
 
     public Boolean getEsEmpleado() {
         return esEmpleado;
