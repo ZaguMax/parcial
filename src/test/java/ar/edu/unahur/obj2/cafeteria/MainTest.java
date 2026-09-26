@@ -196,5 +196,45 @@ public class MainTest {
         assertEquals(133.1, pedido.getImporteTotal(), 0.001);
     }
     
+    @Test
+    void alCrearUnPedidoSeDescuentaElStockDelProducto() {
+        // Arrange
+        Producto producto = new Producto("Medialuna", 50.0, 20);
+        Cliente cliente = new Cliente("Otto", false, new PreferenciaCafe());
+
+        // Act
+        new Pedido(cliente, producto, 5);
+
+        // Assert
+        assertEquals(15, producto.getCantidadDisponible());
+    }
+
+    @Test
+    void elHistorialDeCadaClienteEsIndependiente() {
+        // Arrange
+        Producto producto = new Producto("Cafe", 100.0, 10);
+        Cliente cliente1 = new Cliente("Juan", false, new PreferenciaCafe());
+        Cliente cliente2 = new Cliente("Ana", false, new PreferenciaCafe());
+
+        // Act
+        new Pedido(cliente1, producto, 1);
+        new Pedido(cliente1, producto, 2);
+        new Pedido(cliente2, producto, 3);
+
+        // Assert
+        assertEquals(2, cliente1.getHistorialPedidos().size());
+        assertEquals(1, cliente2.getHistorialPedidos().size());
+    }
+
+    @Test
+    void sePuedeVerLaCantidadDeElementosDelPedido(){
+        // Arrange
+        Producto producto = new Producto("Cafe", 100.0, 10);
+        Cliente cliente = new Cliente("Chayane", false, new PreferenciaCafe());
+        Pedido pedido = new Pedido(cliente, producto, 7);
+        
+        // Assert
+        assertEquals(7, pedido.getCantidad());
+    }
 }
 
